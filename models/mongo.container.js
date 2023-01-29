@@ -1,12 +1,7 @@
-// import mongoose from "mongoose";
-// import {ObjectId} from "mongodb";
-// import {mongo_url, base} from "../config.js";
-
 const {mongoose} = require('mongoose')
-const {ObjectId} = require('mongodb')
 const {remoteConfig} = require('../config')
 
-class ContenedorMongoDB {
+class MongoContainer {
     constructor(model) {
         this.model = model
         this.connect()
@@ -64,23 +59,6 @@ class ContenedorMongoDB {
             console.log(err)
         }
     }
-
-    async addProduct(cartId, product){
-        try {
-            const productAdd = {...product._doc, cantidad: product.cantidad}
-            await this.model.updateOne({_id: cartId},{$push: {productos: productAdd}})
-        }catch (err) {
-            console.log(err)
-        }
-    }
-
-    async removeProduct(cartId, productId){
-        try{
-            await this.model.updateOne({_id: cartId},{$pull: {productos: {_id: ObjectId(productId)}}})
-        }catch (err) {
-            console.log(err)
-        }
-    }
 }
 
-module.exports = ContenedorMongoDB
+module.exports = MongoContainer

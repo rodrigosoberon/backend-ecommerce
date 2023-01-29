@@ -1,13 +1,14 @@
 const express = require('express')
-const productos = require('./routes/productosRoute')
+const products = require('./routes/products.routes')
 const initServer = () => {
     const app = express()
 
     app.get('/', (request, response) => {
-        response.send('<h1>Hello World!</h1>')
+        response.send('<h1>API running!</h1>')
     })
-
-    app.use("/api/productos", productos)
+    app.use(express.json())
+    app.use(express.urlencoded({extended: true}))
+    app.use("/api/products", products)
 
     return {
         listen: port => new Promise((res, rej) => {
