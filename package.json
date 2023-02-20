@@ -2,9 +2,10 @@
   "name": "backend-ecommerce",
   "version": "1.0.0",
   "description": "Proyecto MERN",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "./app.js",
+    "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,7 +13,7 @@
     "url": "git+https://github.com/rodrigosoberon/backend-ecommerce.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rodrigo Soberon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rodrigosoberon/backend-ecommerce/issues"
@@ -25,6 +26,7 @@
     "mongoose": "^6.8.4"
   },
   "devDependencies": {
+    "nodemon": "^2.0.20",
     "standard": "^17.0.0"
   }
 }
