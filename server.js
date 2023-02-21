@@ -19,7 +19,7 @@ const initServer = () => {
 	app.use(infoRouter)
 
 	app.get('/', (req, res) => {
-		res.render('index', { funciona: 'Si' })
+		res.render('index')
 	})
 	//* ----------------------- Middlewares----------------------- *//
 

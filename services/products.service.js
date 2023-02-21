@@ -1,5 +1,5 @@
-const Container = require('../models/daos/products.dao')
-const container = new Container()
+const ProductDao = require('../models/daos/products.dao')
+const productDao = new ProductDao()
 const { ProductDto } = require('../models/dtos/products.dto')
 const HttpError = require('../models/http-error')
 
@@ -7,7 +7,7 @@ class ProductsService {
 	async getProducts() {
 		let products
 		try {
-			products = await container.getAll()
+			products = await productDao.getAll()
 			return products.map(p => new ProductDto(p.toObject()))
 		} catch (err) {
 			console.log(err)
@@ -17,7 +17,7 @@ class ProductsService {
 	async getProductById(id, next) {
 		let product
 		try {
-			product = await container.getById(id)
+			product = await productDao.getById(id)
 			if (product) {
 				const productDtoConvertido = new ProductDto(...product)
 				return { ...productDtoConvertido }
@@ -28,19 +28,19 @@ class ProductsService {
 	}
 
 	async postProduct(product, next) {
-		let newId
+		let newProduct
 		try {
-			newId = await container.save(new ProductDto(product))
+			newProduct = await productDao.save(new ProductDto(product))
 		} catch (err) {
 			return next(new HttpError('Something went wrong, could not save product.', 500))
 		}
-		return newId
+		return newProduct
 	}
 
 	async putProduct(id, product, next) {
-		if (await container.getById(id)) {
+		if (await productDao.getById(id)) {
 			try {
-				await container.updateById(id, new ProductDto(product))
+				await productDao.updateById(id, new ProductDto(product))
 			} catch (err) {
 				return next(new HttpError('Something went wrong, could not update product.', 500))
 			}
@@ -51,9 +51,9 @@ class ProductsService {
 	}
 
 	async deleteProduct(id) {
-		if (await container.getById(id)) {
+		if (await productDao.getById(id)) {
 			try {
-				await container.deleteById(id)
+				await productDao.deleteById(id)
 			} catch (err) {
 				return next(new HttpError('Something went wrong, could not delete product.', 500))
 			}
