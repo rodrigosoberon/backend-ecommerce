@@ -1,5 +1,6 @@
 const express = require('express')
 const products = require('./routes/products.routes')
+const infoRouter = require('./routes/info.routes')
 const hbs = require('express-handlebars')
 
 const initServer = () => {
@@ -8,6 +9,7 @@ const initServer = () => {
 	app.use(express.json())
 	app.use(express.urlencoded({ extended: true }))
 	app.use('/api/products', products)
+	app.use(infoRouter)
 
 	app.get('/', (req, res) => {
 		res.render('index', { funciona: 'Si' })
