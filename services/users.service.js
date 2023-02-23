@@ -14,7 +14,7 @@ class UsersService {
 			}
 		} catch (err) {
 			console.log(err)
-			return next(new HttpError('Signing up failed, please try again later.', 500))
+			return next(new HttpError('Process failed, please try again later.', 500))
 		}
 	}
 

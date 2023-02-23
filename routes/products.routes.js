@@ -9,7 +9,7 @@ router.get('/', productsController.getProductsController)
 
 router.get('/:id', productsController.getProductByIdController)
 
-// router.use(checkAuth)
+router.use(checkAuth)
 
 router.put('/:id', productsController.putProductController)
 

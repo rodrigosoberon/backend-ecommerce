@@ -63,8 +63,9 @@ class UsersController {
 		} catch (err) {
 			return next(new HttpError('Loggin in failed, please try again later.', 500))
 		}
+
 		if (!isPasswordValid) {
-			return next('Invalid credentials, could not log you in', 401)
+			return next(new HttpError('Invalid credentials, could not log you in', 401))
 		}
 
 		let token
