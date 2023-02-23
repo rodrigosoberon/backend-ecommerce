@@ -1,7 +1,7 @@
 const { MessageDTO } = require('../models/dtos/message.dto')
 const MessageDao = require('../models/daos/messages.dao')
 const messageDao = new MessageDao()
-const HttpError = require('../models/http-error')
+const HttpError = require('../utils/http-error')
 
 class MessageService {
 	async getMessages() {

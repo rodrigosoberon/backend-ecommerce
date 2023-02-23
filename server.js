@@ -1,5 +1,6 @@
 const express = require('express')
-const products = require('./routes/products.routes')
+const productsRouter = require('./routes/products.routes')
+const usersRouter = require('./routes/users.routes')
 const infoRouter = require('./routes/info.routes')
 const hbs = require('express-handlebars')
 const { Server: IOServer } = require('socket.io')
@@ -15,7 +16,8 @@ const initServer = () => {
 	app.use(express.json())
 	app.use(express.urlencoded({ extended: true }))
 	app.use(express.static('public'))
-	app.use('/api/products', products)
+	app.use('/api/products', productsRouter)
+	app.use(usersRouter)
 	app.use(infoRouter)
 
 	app.get('/', (req, res) => {

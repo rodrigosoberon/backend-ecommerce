@@ -1,6 +1,6 @@
 const ProductsService = require('../services/products.service')
 const productsService = new ProductsService()
-const HttpError = require('../models/http-error')
+const HttpError = require('../utils/http-error')
 
 class ProductsController {
 	async getProductsController(req, res) {

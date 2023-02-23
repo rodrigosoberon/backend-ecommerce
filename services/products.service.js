@@ -1,7 +1,7 @@
 const ProductDao = require('../models/daos/products.dao')
 const productDao = new ProductDao()
 const { ProductDto } = require('../models/dtos/products.dto')
-const HttpError = require('../models/http-error')
+const HttpError = require('../utils/http-error')
 
 class ProductsService {
 	async getProducts() {

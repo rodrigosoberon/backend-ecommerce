@@ -35,6 +35,14 @@ class MongoContainer {
 		}
 	}
 
+	async getByEmail(email) {
+		try {
+			return await this.model.findOne({ email: email })
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
 	async save(object) {
 		const newObject = new this.model(object)
 		try {
