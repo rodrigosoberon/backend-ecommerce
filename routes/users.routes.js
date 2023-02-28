@@ -6,11 +6,6 @@ const { check } = require('express-validator')
 const UsersController = require('../controllers/users.controller')
 const usersController = new UsersController()
 
-router.get('/signup')
-router.get('/login', (req, res) => {
-	res.render('login')
-})
-
 router.post(
 	'/signup',
 	[

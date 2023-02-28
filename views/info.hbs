@@ -1,4 +1,26 @@
-<h1>Info</h1>
+<h1>Server Info</h1>
 <hr />
+<h2>Entry Arguments</h2>
+{{#each info.entrada}}
+	<p>{{this}}</p>
+{{/each}}
 <h2>Platform</h2>
 <p>{{info.platform}}</p>
+<h2>Architecture</h2>
+<p>{{info.arch}}</p>
+<h2>Process ID</h2>
+<p>{{info.pid}}</p>
+<h2>Process Title</h2>
+<p>{{info.title}}</p>
+<h2>Process Uptime</h2>
+<p>{{info.uptime}}</p>
+<h2>Process Memory Usage</h2>
+<p>{{info.memoryUsage}}</p>
+<h2>Process CPU Usage</h2>
+<p>{{info.cpuUsage}}</p>
+<h2>Source Path</h2>
+<p>{{info.cwd}}</p>
+<h2>Exec Path</h2>
+<p>{{info.execPath}}</p>
+<h2>Version</h2>
+<p>{{info.version}}</p>

@@ -2,15 +2,19 @@ const express = require('express')
 const productsRouter = require('./routes/products.routes')
 const usersRouter = require('./routes/users.routes')
 const infoRouter = require('./routes/info.routes')
+const chatRouter = require('./routes/chat.routes')
 const hbs = require('express-handlebars')
 const { Server: IOServer } = require('socket.io')
 const { Server: HttpServer } = require('http')
 const initSocket = require('./utils/initSocket')
 
 const initServer = () => {
+	//* --------------------- Socket.io server -------------------- *//
 	const app = express()
 	const httpServer = new HttpServer(app)
 	const io = new IOServer(httpServer)
+	initSocket(io)
+	//* --------------------- Socket.io server -------------------- *//
 
 	//* ----------------------- Middlewares----------------------- *//
 	app.use(express.json())
@@ -19,10 +23,7 @@ const initServer = () => {
 	app.use('/api/products', productsRouter)
 	app.use(usersRouter)
 	app.use(infoRouter)
-
-	app.get('/', (req, res) => {
-		res.render('index')
-	})
+	app.use(chatRouter)
 	//* ----------------------- Middlewares----------------------- *//
 
 	//* -------------------- Handlebars setup -------------------- *//
@@ -48,10 +49,6 @@ const initServer = () => {
 		res.json({ message: error.message || 'Unknown error ocurred!' })
 	})
 	//* ---------------------- Custom error ---------------------- *//
-
-	//* --------------------- Socket.io setup --------------------- *//
-	initSocket(io)
-	//* --------------------- Socket.io setup --------------------- *//
 
 	return {
 		listen: port =>
