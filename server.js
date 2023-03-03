@@ -1,6 +1,7 @@
 const express = require('express')
 const productsRouter = require('./routes/products.routes')
 const cartsRouter = require('./routes/carts.routes')
+const ordersRoute = require('./routes/orders.routes')
 const usersRouter = require('./routes/users.routes')
 const infoRouter = require('./routes/info.routes')
 const chatRouter = require('./routes/chat.routes')
@@ -26,6 +27,7 @@ const initServer = () => {
 	//* ------------------------- Routes ------------------------- *//
 	app.use('/api/products', productsRouter)
 	app.use('/api/carts', cartsRouter)
+	app.use('/api/orders', ordersRoute)
 	app.use(usersRouter)
 	app.use(infoRouter)
 	app.use(chatRouter)
