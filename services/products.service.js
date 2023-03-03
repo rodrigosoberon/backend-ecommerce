@@ -4,60 +4,65 @@ const { ProductDto } = require('../models/dtos/products.dto')
 const HttpError = require('../utils/http-error')
 
 class ProductsService {
-	async getProducts() {
+	async getProducts(req, res, next) {
 		let products
 		try {
 			products = await productDao.getAll()
-			return products.map(p => new ProductDto(p.toObject()))
+			return res.json(products.map(p => new ProductDto(p.toObject())))
 		} catch (err) {
-			console.log(err)
+			return next(new HttpError('Something went wrong, could not get products.', 500))
 		}
 	}
 
-	async getProductById(id, next) {
+	async getProductById(req, res, next) {
+		const id = req.params.id
 		let product
 		try {
 			product = await productDao.getById(id)
 			if (product) {
-				const productDtoConvertido = new ProductDto(...product)
-				return { ...productDtoConvertido }
+				const dtoProduct = new ProductDto(product)
+				return res.json({ ...dtoProduct })
 			}
 		} catch (err) {
 			return next(new HttpError('Product not found', 404))
 		}
 	}
 
-	async postProduct(product, next) {
+	async postProduct(req, res, next) {
+		const product = req.body
 		let newProduct
 		try {
 			newProduct = await productDao.save(new ProductDto(product))
 		} catch (err) {
 			return next(new HttpError('Something went wrong, could not save product.', 500))
 		}
-		return newProduct
+		return res.json(newProduct)
 	}
 
-	async putProduct(id, product, next) {
+	async putProduct(req, res, next) {
+		const id = req.params.id
+		const product = req.body
 		if (await productDao.getById(id)) {
 			try {
 				await productDao.updateById(id, new ProductDto(product))
 			} catch (err) {
 				return next(new HttpError('Something went wrong, could not update product.', 500))
 			}
-			return { message: 'Product updated successfully' }
+			return res.json({ message: 'Product updated successfully' })
 		} else {
 			next(new HttpError('Product not found', 404))
 		}
 	}
 
-	async deleteProduct(id) {
+	async deleteProduct(req, res, next) {
+		const id = req.params.id
 		if (await productDao.getById(id)) {
 			try {
 				await productDao.deleteById(id)
 			} catch (err) {
 				return next(new HttpError('Something went wrong, could not delete product.', 500))
 			}
-			return { message: 'Product updated successfully' }
+			return res.json({ message: 'Product updated deleted' })
 		} else {
 			next(new HttpError('Product not found', 404))
 		}
