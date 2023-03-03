@@ -5,6 +5,7 @@ const cartsDao = new CartsDato()
 const ProductDao = require('../models/daos/products.dao')
 const productDao = new ProductDao()
 const HttpError = require('../utils/http-error')
+const sendMailTo = require('../utils/nodemailer')
 
 class OrdersService {
 	async getOrders(req, res, next) {
@@ -93,6 +94,13 @@ class OrdersService {
 		} catch (err) {
 			return next(new HttpError('Something went wrong, could not confirm order.', 500))
 		}
+
+		//* send email
+		const subject = `Order ${order.orderNumber} confirmed`
+		const text = `Your order # ${order.orderNumber} has been confirmed.`
+		try {
+			sendMailTo(order.buyer, subject, text)
+		} catch (err) {}
 
 		return res.json({ message: 'Order confirmed.' })
 	}

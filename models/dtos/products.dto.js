@@ -6,6 +6,7 @@ class ProductDto {
 		this.code = data.code
 		this.thumbnail = data.thumbnail
 		this.price = data.price
+		this.category = data.category
 		this.stock = data.stock
 		this.timestamp = data.timestamp || new Date().toLocaleString()
 	}

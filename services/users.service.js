@@ -3,6 +3,7 @@ const HttpError = require('../utils/http-error')
 const userDao = new UserDao()
 const jwt = require('jsonwebtoken')
 const { tokenConfig } = require('../config')
+const sendMailTo = require('../utils/nodemailer')
 
 class UsersService {
 	async getUserByEmail(email, next) {
@@ -20,10 +21,20 @@ class UsersService {
 
 	async createUser(user, next) {
 		try {
-			return await userDao.save(user)
+			await userDao.save(user)
 		} catch (err) {
 			return next(new HttpError('Signing up failed, please try again later', 500))
 		}
+
+		try {
+			sendMailTo(
+				process.env.NODEMAILER_SEND_REGISTERS_TO,
+				'New user registered',
+				`New user registered: ${user.email}`
+			)
+		} catch (err) {}
+
+		return user
 	}
 
 	async createToken(user, next) {
