@@ -29,7 +29,7 @@ class MongoContainer {
 
 	async getById(id) {
 		try {
-			return await this.model.find({ _id: id })
+			return await this.model.findOne({ _id: id })
 		} catch (err) {
 			console.log(err)
 		}
@@ -56,6 +56,14 @@ class MongoContainer {
 	async updateById(id, fields) {
 		try {
 			await this.model.updateOne({ _id: id }, fields)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
+	async updateByEmail(email, fields) {
+		try {
+			await this.model.updateOne({ email: email }, fields)
 		} catch (err) {
 			console.log(err)
 		}

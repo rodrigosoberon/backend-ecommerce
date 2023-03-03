@@ -1,5 +1,6 @@
 const express = require('express')
 const productsRouter = require('./routes/products.routes')
+const cartsRouter = require('./routes/carts.routes')
 const usersRouter = require('./routes/users.routes')
 const infoRouter = require('./routes/info.routes')
 const chatRouter = require('./routes/chat.routes')
@@ -20,11 +21,15 @@ const initServer = () => {
 	app.use(express.json())
 	app.use(express.urlencoded({ extended: true }))
 	app.use(express.static('public'))
+	//* ----------------------- Middlewares----------------------- *//
+
+	//* ------------------------- Routes ------------------------- *//
 	app.use('/api/products', productsRouter)
+	app.use('/api/carts', cartsRouter)
 	app.use(usersRouter)
 	app.use(infoRouter)
 	app.use(chatRouter)
-	//* ----------------------- Middlewares----------------------- *//
+	//* ------------------------- Routes ------------------------- *//
 
 	//* -------------------- Handlebars setup -------------------- *//
 	app.engine(
@@ -50,6 +55,7 @@ const initServer = () => {
 	})
 	//* ---------------------- Custom error ---------------------- *//
 
+	//* ---------------------- Server listen --------------------- *//
 	return {
 		listen: port =>
 			new Promise((res, rej) => {
@@ -59,6 +65,7 @@ const initServer = () => {
 				server.on('error', err => rej(err))
 			})
 	}
+	//* ---------------------- Server listen --------------------- *//
 }
 
 module.exports = initServer
