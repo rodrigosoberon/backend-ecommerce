@@ -7,6 +7,16 @@ const productDao = new ProductDao()
 const HttpError = require('../utils/http-error')
 
 class OrdersService {
+	async getOrders(req, res, next) {
+		let orders
+		try {
+			orders = await ordersDao.getAll()
+		} catch (err) {
+			return next(new HttpError('Something went wrong, could not get orders.', 500))
+		}
+		return res.json(orders)
+	}
+
 	async postOrder(req, res, next) {
 		//* get cart
 		const cartId = req.params.cartId
@@ -61,6 +71,54 @@ class OrdersService {
 			return next(new HttpError('Something went wrong, could not save order.', 500))
 		}
 		return res.json(newOrder)
+	}
+
+	async confirmOrder(req, res, next) {
+		//* get order
+		let order
+		try {
+			order = await ordersDao.getById(req.params.orderId)
+		} catch (err) {
+			return next(new HttpError('Something went wrong, could not confirm order.', 500))
+		}
+
+		if (!order) {
+			return next(new HttpError('Order not found', 404))
+		}
+
+		//* update order status
+		order.status = 'confirmed'
+		try {
+			await ordersDao.save(order)
+		} catch (err) {
+			return next(new HttpError('Something went wrong, could not confirm order.', 500))
+		}
+
+		return res.json({ message: 'Order confirmed.' })
+	}
+
+	async cancelOrder(req, res, next) {
+		//* get order
+		let order
+		try {
+			order = await ordersDao.getById(req.params.orderId)
+		} catch (err) {
+			return next(new HttpError('Something went wrong, could not confirm order.', 500))
+		}
+
+		if (!order) {
+			return next(new HttpError('Order not found', 404))
+		}
+
+		//* update order status
+		order.status = 'cancelled'
+		try {
+			await ordersDao.save(order)
+		} catch (err) {
+			return next(new HttpError('Something went wrong, could not confirm order.', 500))
+		}
+
+		return res.json({ message: 'Order cancelled.' })
 	}
 }
 
