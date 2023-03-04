@@ -22,9 +22,11 @@ class ProductsService {
 			if (product) {
 				const dtoProduct = new ProductDto(product)
 				return res.json({ ...dtoProduct })
+			} else {
+				return next(new HttpError('Product not found', 404))
 			}
 		} catch (err) {
-			return next(new HttpError('Product not found', 404))
+			return next(new HttpError('Something went wrong, could not save product.', 500))
 		}
 	}
 
@@ -62,7 +64,7 @@ class ProductsService {
 			} catch (err) {
 				return next(new HttpError('Something went wrong, could not delete product.', 500))
 			}
-			return res.json({ message: 'Product updated deleted' })
+			return res.json({ message: 'Product deleted!' })
 		} else {
 			next(new HttpError('Product not found', 404))
 		}

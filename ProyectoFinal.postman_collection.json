@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "3a90c22c-e243-4fc8-8bec-358981f09cfc",
+		"name": "ProyectoFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23770623"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"roberto@email.com\",\n\t\"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/products",
+			"item": [
+				{
+					"name": "get products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/63f3b56d796ac52f2ce3aadc",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"63f3b56d796ac52f2ce3aadc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/products/6401c3f270802bece1cfa67f",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"6401c3f270802bece1cfa67f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Pera\",\n\t\"description\": \"Pera por kilo\",\n\t\"code\": \"f4k\",\n\t\"thumbnail\": \"https://emojitool.com/img/apple/ios-15.4/pear-2178.png\",\n\t\"price\": 1100,\n\t\"stock\": 120\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Pera\",\n\t\"description\": \"Pera por kilo\",\n\t\"code\": \"f4k\",\n\t\"thumbnail\": \"https://emojitool.com/img/apple/ios-15.4/pear-2178.png\",\n\t\"price\": 1100,\n\t\"stock\": 1200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/64028ced4c050496b30f2236",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"64028ced4c050496b30f2236"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/carts",
+			"item": [
+				{
+					"name": "get cart by email",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/carts/roberto@email.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"roberto@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new empty cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"roberto@email.com\",\n\t\"address\": \"calle falsa 123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/carts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add product to cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"64028bb14c050496b30f2230\",\n    \"qty\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/carts/640292174c050496b30f225c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"640292174c050496b30f225c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove product from cart",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\":\"64028bb14c050496b30f2230\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/carts/640292174c050496b30f225c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"640292174c050496b30f225c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/carts/roberto@email.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"roberto@email.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/orders",
+			"item": [
+				{
+					"name": "get orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token\n",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/orders/640292174c050496b30f225c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								"640292174c050496b30f225c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/orders/640292b44c050496b30f226a",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								"640292b44c050496b30f226a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel order",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y3NzQ5NTRkY2MzM2E4ZDg4MDMzMzMiLCJlbWFpbCI6InJvYmVydG9AZW1haWwuY29tIiwiaWF0IjoxNjc3ODg3NjYwLCJleHAiOjE2Nzc5NzQwNjB9.3WIEsA12bkJN1TEGyZhuAY8dK_lctgsEqHtNH-AVs-E",
+								"description": "token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/orders/640292b44c050496b30f226a",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								"640292b44c050496b30f226a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
