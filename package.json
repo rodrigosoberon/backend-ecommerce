@@ -1,40 +1,40 @@
 {
-  "name": "backend-ecommerce",
-  "version": "1.0.0",
-  "description": "Proyecto MERN",
-  "main": "app.js",
-  "scripts": {
-    "start": "./app.js",
-    "dev": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rodrigosoberon/backend-ecommerce.git"
-  },
-  "keywords": [],
-  "author": "Rodrigo Soberon",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rodrigosoberon/backend-ecommerce/issues"
-  },
-  "homepage": "https://github.com/rodrigosoberon/backend-ecommerce#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "express-handlebars": "^6.0.7",
-    "express-validator": "^6.15.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongodb": "^4.13.0",
-    "mongoose": "^6.8.4",
-    "mongoose-unique-validator": "^3.1.0",
-    "nodemailer": "^6.9.1",
-    "socket.io": "^4.6.1",
-    "yargs": "^17.7.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20",
-    "standard": "^17.0.0"
-  }
+	"name": "backend-ecommerce",
+	"version": "1.0.0",
+	"description": "Proyecto MERN",
+	"main": "app.js",
+	"scripts": {
+		"start": "node ./app.js",
+		"dev": "nodemon ./app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rodrigosoberon/backend-ecommerce.git"
+	},
+	"keywords": [],
+	"author": "Rodrigo Soberon",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/rodrigosoberon/backend-ecommerce/issues"
+	},
+	"homepage": "https://github.com/rodrigosoberon/backend-ecommerce#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-handlebars": "^6.0.7",
+		"express-validator": "^6.15.0",
+		"jsonwebtoken": "^9.0.0",
+		"mongodb": "^4.13.0",
+		"mongoose": "^6.8.4",
+		"mongoose-unique-validator": "^3.1.0",
+		"nodemailer": "^6.9.1",
+		"socket.io": "^4.6.1",
+		"yargs": "^17.7.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20",
+		"standard": "^17.0.0"
+	}
 }
